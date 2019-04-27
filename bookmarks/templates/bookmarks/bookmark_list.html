@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Latest bookmarks{% endblock %}
+
+
+{% block heading %}
+  <h2 id="bl_title">Últimos Favoritos Adicionados</h2>
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <ul class="list-unstyled">
+  {% for bookmark in bookmarks %}
+    <li class="well well-sm">{% include "bookmarks/bookmark.html" %}</li>
+  {% empty %}
+    <li>No bookmarks. :(</li>
+  {% endfor %}
+  </ul>
+  {% else %}
+  <h3>Você não está logado</h3>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}

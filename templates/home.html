@@ -1,0 +1,17 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Targetpedia v0.1</h1>
+{% if user.is_authenticated %}
+  <h3>Olá, {{ user.username }}!</h3>
+  <p><a href="{% url 'bookmarks_bookmark_list' %}">Visualizar Favoritos</a></p>
+  <p><a href="{% url 'bookmarks_bookmark_create' %}">Adicionar Favorito</a></p>
+  <p><a href="{% url 'logout' %}">logout</a></p>
+{% else %}
+  <h3>Você não está logado</h3>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
